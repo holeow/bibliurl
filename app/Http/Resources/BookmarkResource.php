@@ -21,7 +21,11 @@ class BookmarkResource extends JsonResource
             "URL"=> $this->URL,
             "CreationDate" => $this->CreationDate,
             "ImgUrl" => $this->ImgUrl,
-            "Folder" => $this->Folder
+            "Folder" => $this->Folder,
+
+            "links"=> [
+                "Folder" => route('folders.show',$this->Folder)
+            ]
         ];
     }
 }

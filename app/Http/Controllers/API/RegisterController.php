@@ -50,4 +50,9 @@ class RegisterController extends BaseController
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
         }
     }
+
+    public function testConnection(Request $request){
+
+        return $this->sendResponse(Auth::user()->getAuthIdentifierName(),"connected",200);
+    }
 }
