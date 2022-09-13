@@ -44,7 +44,7 @@ class Folder extends Model
 		'WebUser'
 	];
 
-	public function folder()
+	public function parent()
 	{
 		return $this->belongsTo(Folder::class, 'Container');
 	}
