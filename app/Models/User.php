@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function create(array $attributes = [])
+    {
+        $model = static::query()->create($attributes);
+
+        $dossierRoot = new Folder();
+        $dossierRoot->Name = "/";
+        $dossierRoot->WebUser = $model->id;
+        $dossierRoot->save();
+
+        return $model;
+    }
 }
