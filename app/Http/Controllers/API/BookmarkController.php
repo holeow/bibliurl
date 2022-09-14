@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 
-class BookmarkController extends Controller
+class BookmarkController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BookmarkController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\BookmarkController;
 use App\Http\Controllers\API\FolderController;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,10 @@ Route::controller(RegisterController::class)->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('folders', FolderController::class);
     Route::apiResource("bookmarks", BookmarkController::class);
-    //TODO Create Tags route
+    Route::get("/bookmarks/{bookmark}/tags", [TagController::class, 'gettagsofbookmark']);
+    Route::get("/folders/{folder}/tags", [TagController::class, 'gettagsoffolder']);
+    Route::get("/tags", [TagController::class, 'gettagsofuser']);
+    Route::put("/bookmarks/{bookmark}/tags", [TagController::class, "updatetagsofbookmark"]);
+    Route::put("/folders/{folder}/tags", [TagController::class, "updatetagsoffolder"]);
+
 });

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 
-class FolderController extends Controller
+class FolderController extends BaseController
 {
     /**
      * Display a listing of the resource.
