@@ -18,7 +18,14 @@ class FolderResource extends JsonResource
             "ID"=> $this->ID,
             "Name" => $this->Name,
             "ImgUrl"=> $this->ImgUrl,
-            "WebUser"=> $this->WebUser
+            "Container"=> $this->Container,
+            "WebUser"=> $this->WebUser,
+
+            "links"=> [
+                "Parent Folder" => route('folders.show',$this->Container),
+                "Tags" => route("folders.tags",$this->ID)
+            ]
+
         ];
     }
 }
