@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource("bookmarks", BookmarkController::class);
     Route::get("/bookmarks/{bookmark}/tags", [TagController::class, 'gettagsofbookmark'])->name('bookmarks.tags');
     Route::get("/folders/{folder}/tags", [TagController::class, 'gettagsoffolder'])->name('folders.tags');
-    Route::get("/tags", [TagController::class, 'gettagsofuser'])->name('user.tags');
+    Route::get("user/tags", [TagController::class, 'gettagsofuser'])->name('user.tags');
     Route::put("/bookmarks/{bookmark}/tags", [TagController::class, "updatetagsofbookmark"])->name("bookmarks.tags.update");
     Route::put("/folders/{folder}/tags", [TagController::class, "updatetagsoffolder"])->name("folders.tags.update");
 
