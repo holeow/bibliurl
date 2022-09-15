@@ -91,6 +91,10 @@ class BookmarkController extends BaseController
             "ImgUrl"=> "max:1023|url",
             "Folder"=> "integer|required"
         ]);
+
+        if($validator->fails()){
+            return $this->sendError("Validation error",$validator->errors(),400);
+        }
         if(!Gate::allows("access-bookmark",$bookmark)){
             return $this->sendError(null,"Unauthorized access to bookmark",403);
         }
@@ -110,7 +114,7 @@ class BookmarkController extends BaseController
         $bookmark->save();
 
 
-        return $this->sendResponse(null,"Updated with success");
+        return $this->sendResponse($folder,"Updated with success");
     }
 
     /**
