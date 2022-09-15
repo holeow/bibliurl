@@ -22,7 +22,7 @@ class FolderResource extends JsonResource
             "WebUser"=> $this->WebUser,
 
             "links"=> [
-                "Parent Folder" => route('folders.show',$this->Container),
+                "Parent Folder" => $this->Container == null ? null : route('folders.show',$this->Container),
                 "Tags" => route("folders.tags",$this->ID)
             ]
 
