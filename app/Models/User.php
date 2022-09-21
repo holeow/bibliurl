@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'isadmin'
     ];
 
     /**
@@ -44,6 +45,7 @@ class User extends Authenticatable
 
     public static function create(array $attributes = [])
     {
+        
         $model = static::query()->create($attributes);
 
         $dossierRoot = new Folder();

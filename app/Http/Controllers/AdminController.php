@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -32,8 +35,24 @@ class AdminController extends Controller
         else return "Vous devez être administrateur pour accéder à cette page";
     }
 
-    public function postuser(){
-        if(Auth::user()->isadmin) return redirect("admin/userlist");
+    public function postuser(Request $request){
+        if(Auth::user()->isadmin) {
+            $input = $request->all();
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    Rule::unique(User::class),
+                ],
+                
+            ])->validate();
+
+            $us = User::create(['isadmin'=>false ,"name"=> $input['name'], "email"=> $input['email'], "password"=> Hash::make($input['password'])]);
+            return redirect("admin/userlist");
+        }
         else return "Vous devez être administrateur pour accéder à cette page";
     }
 

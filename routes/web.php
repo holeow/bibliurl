@@ -24,7 +24,7 @@ Route::get('home', function(){
    
 Route::get('admin/', [AdminController::class, 'index'])->middleware('auth');
 Route::get('admin/userlist/', [AdminController::class, 'userlist'])->middleware('auth');
-Route::get('admin/createuser/', [AdminController::class, 'createuser'])->middleware('auth');
-Route::post('admin/createuser', [AdminController::class, 'postuser'])->middleware('auth');
+Route::get('admin/createuser/', [AdminController::class, 'createuser'])->middleware('auth')->name("admin.createuser");
+Route::post('admin/createuser', [AdminController::class, 'postuser'])->middleware('auth')->name('admin.postuser');
 Route::post('admin/makeadmin/{user}', [AdminController::class, 'makeadmin'])->name("admin.makeadmin")->middleware('auth');
 Route::post('admin/banuser/{user}', [AdminController::class, 'banuser'])->name("admin.banuser")->middleware('auth');

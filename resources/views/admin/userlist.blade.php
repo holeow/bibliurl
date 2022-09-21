@@ -1,3 +1,5 @@
+<form action="{{route('admin.createuser')}}"> <input type="submit" value="Créer un utilisateur"></form>
+
 <table>
     @foreach ($users as $user)
         <tr><td>{{$user->id}}</td><td>{{$user->name}}</td><td>{{$user->email}}</td>

@@ -1,5 +1,5 @@
 
-<form method="POST" action="{{ route('register') }}">
+<form method="POST" action="{{ route('admin.postuser') }}">
         @csrf
 
         <div>
