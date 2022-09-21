@@ -27,3 +27,4 @@ Route::get('admin/userlist/', [AdminController::class, 'userlist'])->middleware(
 Route::get('admin/createuser/', [AdminController::class, 'createuser'])->middleware('auth');
 Route::post('admin/createuser', [AdminController::class, 'postuser'])->middleware('auth');
 Route::post('admin/makeadmin/{user}', [AdminController::class, 'makeadmin'])->name("admin.makeadmin")->middleware('auth');
+Route::post('admin/banuser/{user}', [AdminController::class, 'banuser'])->name("admin.banuser")->middleware('auth');

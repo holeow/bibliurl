@@ -46,4 +46,11 @@ class AdminController extends Controller
         else return "Vous devez être administrateur pour accéder à cette page";
         
     }
+
+    public function banuser(User $user){
+        if(Auth::user()->isadmin){
+            $user->delete();
+            return redirect("admin/userlist");
+        }else return "Vous devez être administrateur pour accéder à cette page";
+    }
 }
