@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\BookmarkController;
 use App\Http\Controllers\API\FolderController;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get("user/tags", [TagController::class, 'gettagsofuser'])->name('user.tags');
     Route::put("/bookmarks/{bookmark}/tags", [TagController::class, "updatetagsofbookmark"])->name("bookmarks.tags.update");
     Route::put("/folders/{folder}/tags", [TagController::class, "updatetagsoffolder"])->name("folders.tags.update");
+    Route::get('/search', [SearchController::class,"Search"])->name("search");
 
 });
